@@ -3,10 +3,9 @@ services:
     db:
         container_name: simple-bank
         image: postgres:12-alpine
-        restart: always
         environment:
           - POSTGRES_PASSWORD=123456
           - POSTGRES_DB=simple-bank
-          - POSTGRES_USER=root
+          - POSTGRES_USER=postgres
         ports:
-          - 5435:5432
+          - 5430
