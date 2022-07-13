@@ -58,5 +58,22 @@ func runService(db *gorm.DB) {
 		})
 
 	})
+
+	r.PUT("accounts/", func(ctx *gin.Context) {
+		var account models.Account
+		if err := ctx.ShouldBind(&account); err != nil {
+			fmt.Printf("Account %v", account)
+			panic(err)
+		}
+
+		if err := db.Where("id = ?",account.Id).Updates(account).Error; err != nil {
+			panic(err)
+		}
+
+		ctx.JSON(http.StatusOK, gin.H{
+			"message": "Update successfully",
+		})
+
+	})
 	r.Run()
 }
