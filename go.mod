@@ -1,4 +1,4 @@
-module github.com/thuanVoxTiki/simple_bank
+module backend/simple_bank
 
 go 1.18
 
